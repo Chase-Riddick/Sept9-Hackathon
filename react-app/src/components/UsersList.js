@@ -8,23 +8,25 @@ function UsersList() {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
-      setUsers(responseData.users);
+      setUsers(responseData);
+      // setUsers(responseData.users);
     }
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
-    );
-  });
+  // const userComponents = users.map((user) => {
+  //   return (
+  //     <li key={user.id}>
+  //       <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+  //     </li>
+  //   );
+  // });
+
+  console.log(users)
 
   return (
     <>
       <h1>User List: </h1>
-      <ul>{userComponents}</ul>
     </>
   );
 }
