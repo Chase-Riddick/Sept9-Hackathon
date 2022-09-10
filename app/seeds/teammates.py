@@ -63,5 +63,5 @@ def seed_teammates():
     db.session.commit()
 
 def undo_teammates():
-    db.session.execute('TRUNCATE subposts RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE teammates RESTART IDENTITY CASCADE;')
     db.session.commit()
