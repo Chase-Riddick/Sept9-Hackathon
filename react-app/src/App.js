@@ -8,14 +8,21 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import { useDataContext } from './context/DataContext';
+import { useSelector } from 'react-redux';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const { setUserData } = useDataContext();
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUserData(responseData);
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -23,6 +30,7 @@ function App() {
   if (!loaded) {
     return null;
   }
+
 
   return (
     <BrowserRouter>

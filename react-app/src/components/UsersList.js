@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDataContext } from '../context/DataContext';
+
 
 function UsersList() {
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      setUsers(responseData);
-      // setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+  const { userData } = useDataContext();
 
-  // const userComponents = users.map((user) => {
-  //   return (
-  //     <li key={user.id}>
-  //       <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-  //     </li>
-  //   );
-  // });
 
-  console.log(users)
+  console.log(userData)
 
   return (
     <>
