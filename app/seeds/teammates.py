@@ -1,6 +1,6 @@
 from app.models import db, Teammate
 
-def seed_subposts():
+def seed_teammates():
     db.session.add_all(
         [
             Teammate(
@@ -31,7 +31,6 @@ def seed_subposts():
                 last_name = 'Rani',
                 pronunciation = 'V - sha - kha  Ra - ni',
                 pronouns = 'she / her / hers',
-                img_url = '',
                 q1_ans = 'orbi tincidunt ornare. Sed pulvinar proin gravida hendrerit lectus. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Diam vulputate ut pharetra sit ',
                 q2_ans = 'aliquam id diam. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Id venenatis a condimentum vitae sapien pellentesque hab',
                 q3_ans = 'um nunc aliquet bibendum enim facilisis. Nec nam aliquam se',
@@ -63,6 +62,6 @@ def seed_subposts():
     )
     db.session.commit()
 
-def undo_subposts():
+def undo_teammates():
     db.session.execute('TRUNCATE subposts RESTART IDENTITY CASCADE;')
     db.session.commit()
