@@ -1,4 +1,4 @@
-from app.models.teammate import Teammates
+from app.models.teammate import Teammate
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
