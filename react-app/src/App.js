@@ -57,7 +57,7 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/form' exact={true} >
+        <Route path='/teams/:userId/add_teammate' exact={true} >
           <TeammateForm/>
         </Route>
       </Switch>

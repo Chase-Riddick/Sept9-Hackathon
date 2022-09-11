@@ -4,10 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { useState} from 'react';
 import { Button, Form } from 'react-bootstrap'
 import { useDataContext } from '../context/DataContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useParams } from 'react-router-dom';
+
 
 
 export default function TeammateForm () {
+    const userParam = Number(useParams().userId)
+    console.log(userParam)
     const { questions } = useDataContext();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -81,21 +84,73 @@ export default function TeammateForm () {
             return;
           }
 
-          const payload = {
-            first_name: firstName,
-            last_name: lastName,
-            pronunciation,
-            pronouns,
-            q1_ans: q1Ans,
-            q2_ans: q2Ans,
-            q3_ans: q3Ans,
-        };
+        const form = new FormData();
 
-        if (img_url) {
-            payload.img_url  = img_url
-        }
+            form.append('first_name', firstName);
+            form.append('last_name', lastName);
+            form.append('pronunciation', pronunciation);
+            form.append('pronouns', pronouns);
+            form.append('q1_ans', q1Ans);
+            form.append('q2_ans', q2Ans);
+            form.append('q3_ans', q3Ans);
 
-        let res = await dispatch();
+        if (img_url !== null) {form.append('img_url', img_url)};
+
+        const response = await fetch(`/api/users/create_teammate/${userParam}`, {
+                  method: "POST",
+                  body: form
+                });
+
+        const responseData = await response.json();
+        console.log(responseData)
+
+        // export const updateCatch = (payload) => async (dispatch) => {
+
+        //     const {
+        //       id,
+        //       img,
+        //       fish,
+        //       description,
+        //       length,
+        //       weight,
+        //       bait,
+        //       lure,
+        //       long,
+        //       lat
+        //     } = payload
+
+        //     const form = new FormData();
+
+
+        //     form.append('id', id);
+        //     if (img !== null) {form.append('img', img)};
+        //     form.append('fish', fish);
+        //     form.append('description', description);
+        //     form.append('length', length);
+        //     form.append('weight', weight);
+        //     form.append('bait', bait);
+        //     form.append('lure', lure);
+        //     form.append('long', long);
+        //     form.append('lat', lat);
+
+
+
+        //     const response = await fetch('/api/catches', {
+        //       method: "PUT",
+        //       body: form
+        //     });
+
+
+        //   if (response.ok) {
+        //     const data = await response.json();
+        //     if (data.errors) {
+        //       return data;
+        //     }
+
+        //     dispatch(modification(data));
+        //     return null
+        //   }
+        //   }
 
         // setTimeout(() =>{
         //       history.push(`/`)
@@ -142,7 +197,7 @@ export default function TeammateForm () {
                 <Form.Control type="text"  value={q3Ans} onChange={updateQ3Ans} maxLength={80} />
             </Form.Group>
 
-            <Button type="submit">Share Info</Button>
+            <Button className="form-btn" type="submit">Share Info</Button>
         </Form>
         </div>
 

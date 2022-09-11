@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import { Button, Form } from 'react-bootstrap'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,34 +32,36 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <div className='form-container'>
+    <Form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email:</label>
-        <input
+      <Form.Group className='form-group'>
+        <Form.Label htmlFor='email'>Email:</Form.Label>
+        <Form.Control
           name='email'
           type='text'
-          placeholder='Email'
+          placeholder=''
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
-        <label htmlFor='password'>Password:</label>
-        <input
+      </Form.Group>
+      <Form.Group className='form-group'>
+        <Form.Label htmlFor='password'>Password:</Form.Label>
+        <Form.Control
           name='password'
           type='password'
-          placeholder='Password'
+          placeholder=''
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+        <Button className="form-btn" type='submit'>Login</Button>
+      </Form.Group>
+    </Form>
+    </div>
   );
 };
 
