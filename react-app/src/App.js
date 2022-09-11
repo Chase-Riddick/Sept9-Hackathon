@@ -10,6 +10,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import { useDataContext } from './context/DataContext';
 import { useSelector } from 'react-redux';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path='/form' exact={true} >
+        </Route>
       </Switch>
     </BrowserRouter>
   );
