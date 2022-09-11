@@ -7,6 +7,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Card from './components/UserCard'
+import Question from './components/Question'
 import TeammateForm from './components/TeammateForm';
 import UserActionPage from './components/UserActionPage';
 import { authenticate } from './store/session';
@@ -54,6 +56,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/card' exact={true} >
+          <Card />
+        </ProtectedRoute>
+        <ProtectedRoute path='/question' exact={true} >
+          <Question />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <UserActionPage/>

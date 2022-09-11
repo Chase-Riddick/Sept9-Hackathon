@@ -24,6 +24,7 @@ const NavBar = () => {
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
+<<<<<<< HEAD
       </Nav.Item>
 
       <Nav.Item>
@@ -38,6 +39,29 @@ const NavBar = () => {
 
     </Nav>
     </div>
+=======
+        </li>
+        <li>
+          <NavLink to='/users' exact={true} activeClassName='active'>
+            Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/card' exact={true} activeClassName='active'>
+            Card
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/question' exact={true} activeClassName='active'>
+            Question
+          </NavLink>
+        </li>
+        <li>
+          <LogoutButton />
+        </li>
+      </ul>
+    </nav>
+>>>>>>> 4f85d0b9031d763ca14305ac1fe0119577825f6d
   );
 }
 
