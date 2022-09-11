@@ -10,11 +10,14 @@ import User from './components/User';
 import Card from './components/UserCard'
 import Question from './components/Question'
 import TeammateForm from './components/TeammateForm';
+import UserActionPage from './components/UserActionPage';
 import { authenticate } from './store/session';
 import { useDataContext } from './context/DataContext';
 import { useSelector } from 'react-redux';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.min.css';
+
+
 
 
 function App() {
@@ -38,6 +41,7 @@ function App() {
 
 
   return (
+    <div className='global-container'>
     <BrowserRouter>
       <NavBar />
       <Switch>
@@ -60,13 +64,14 @@ function App() {
           <Question />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <UserActionPage/>
         </ProtectedRoute>
-        <Route path='/form' exact={true} >
+        <Route path='/teams/:userId/add_teammate' exact={true} >
           <TeammateForm/>
         </Route>
       </Switch>
     </BrowserRouter>
+    </div>
   );
 }
 

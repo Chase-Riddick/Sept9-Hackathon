@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { Button, Form } from 'react-bootstrap'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,51 +44,48 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='form-container'>
+    <Form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
+      <Form.Group controlId='formFirstName' className='form-group'>
+        <Form.Label className='font-weight-bold' >User Name</Form.Label>
+        <Form.Control type="text"  value={username} onChange={updateUsername} maxLength={25} />
+      </Form.Group>
+      <Form.Group className='form-group'>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className='form-group'>
+        <Form.Label>Password</Form.Label>
+        <Form.Control
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className='form-group'>
+        <Form.Label>Repeat Password</Form.Label>
+        <Form.Control
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+        ></Form.Control>
+      </Form.Group>
+      <Button className="form-btn" type='submit'>Sign Up</Button>
+    </Form>
+    </div>
   );
 };
 
