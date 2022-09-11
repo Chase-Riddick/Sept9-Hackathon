@@ -32,15 +32,9 @@ const NavBar = () => {
               Users
         </NavLink>
       </Nav.Item>
-
         <Nav.Item>
-          <NavLink to='/card' exact={true} activeClassName='active'>
-            Card
-          </NavLink>
-        </Nav.Item>
-        <Nav.Item>
-          <NavLink to='/question' exact={true} activeClassName='active'>
-            Question
+          <NavLink to='/Gameboard' exact={true} activeClassName='active'>
+            Game
           </NavLink>
         </Nav.Item>
         <Nav.Item>
