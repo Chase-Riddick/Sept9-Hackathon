@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import TeammateForm from './components/TeammateForm';
+import UserActionPage from './components/UserActionPage';
 import { authenticate } from './store/session';
 import { useDataContext } from './context/DataContext';
 import { useSelector } from 'react-redux';
@@ -55,7 +56,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <UserActionPage/>
         </ProtectedRoute>
         <Route path='/teams/:userId/add_teammate' exact={true} >
           <TeammateForm/>
