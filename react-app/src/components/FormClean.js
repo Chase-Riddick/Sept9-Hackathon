@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState} from 'react'
+import { useState} from 'react';
+import { Button, Form } from 'react-bootstrap'
 
 export default function TeammateForm () {
     const history = useHistory();
@@ -75,9 +76,13 @@ export default function TeammateForm () {
 
 
     return (
-        <form class="">
+        <Form class="">
+            <Form.Group>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" value={firstName} />
+            </Form.Group>
 
-            <div className='table-row'>
+            {/* <div className='table-row'>
             <div className='table-row-label-block'>
             <h5 className='table-row-label'>{language && language === 'English' ? English.Fish : Chinese.Fish} </h5>
             <p className='required'>*</p>
@@ -89,9 +94,9 @@ export default function TeammateForm () {
                 value={firstName}
                 maxLength={20}
                 onChange={updateFirstName} />
-            </div>
+            </div> */}
 
-        </form>
+        </Form>
 
     )
 }
