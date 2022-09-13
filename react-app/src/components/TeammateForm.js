@@ -102,59 +102,6 @@ export default function TeammateForm () {
                 });
 
         const responseData = await response.json();
-        console.log(responseData)
-
-        // export const updateCatch = (payload) => async (dispatch) => {
-
-        //     const {
-        //       id,
-        //       img,
-        //       fish,
-        //       description,
-        //       length,
-        //       weight,
-        //       bait,
-        //       lure,
-        //       long,
-        //       lat
-        //     } = payload
-
-        //     const form = new FormData();
-
-
-        //     form.append('id', id);
-        //     if (img !== null) {form.append('img', img)};
-        //     form.append('fish', fish);
-        //     form.append('description', description);
-        //     form.append('length', length);
-        //     form.append('weight', weight);
-        //     form.append('bait', bait);
-        //     form.append('lure', lure);
-        //     form.append('long', long);
-        //     form.append('lat', lat);
-
-
-
-        //     const response = await fetch('/api/catches', {
-        //       method: "PUT",
-        //       body: form
-        //     });
-
-
-        //   if (response.ok) {
-        //     const data = await response.json();
-        //     if (data.errors) {
-        //       return data;
-        //     }
-
-        //     dispatch(modification(data));
-        //     return null
-        //   }
-        //   }
-
-        // setTimeout(() =>{
-        //       history.push(`/`)
-        //     }, "1500")
         history.push(`/`)
       }
 
